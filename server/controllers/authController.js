@@ -43,11 +43,11 @@ module.exports = {
       id: user.id,
       username: user.username,
     };
-    return res.send(req.session.user);
+    return res.json(req.session.user);
   },
 
   logout: async (req, res) => {
-    req.session.destroy();
-    return res.send(200);
+    ();
+    return res.status(200).json(req.session.destroy);
   },
 };
