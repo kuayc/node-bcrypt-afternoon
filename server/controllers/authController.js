@@ -30,13 +30,13 @@ module.exports = {
     if (!user) {
       return res
         .status(400)
-        .send(
-          "User  not found. Please register as a new user before logging in."
+        .json(
+          "User or password incorrect. Please register as a new user before logging in."
         );
     }
     const isAuthenticated = bcrypt.compareSync(password, user.hash);
     if (!isAuthenticated) {
-      return res.status(400).send("Incorrect password");
+      return res.status(400).json("Incorrect username or password");
     }
     req.session.user = {
       isAdmin: user.is_admin,
