@@ -3,9 +3,10 @@ const express = require("express");
 const session = require("express-session");
 const massive = require("massive");
 const authCtrl = require("./controllers/authController");
-const app = express();
-const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
+const app = express();
+
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 app.use(express.json());
 
 massive(CONNECTION_STRING).then((db) => {
